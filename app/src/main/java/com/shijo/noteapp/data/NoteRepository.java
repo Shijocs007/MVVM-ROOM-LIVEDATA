@@ -5,6 +5,7 @@ import android.arch.lifecycle.LiveData;
 import android.os.AsyncTask;
 
 import com.shijo.noteapp.model.Note;
+import com.shijo.noteapp.room.NoteDao;
 
 import java.util.List;
 
@@ -13,7 +14,7 @@ public class NoteRepository {
     private LiveData<List<Note>> allNotes;
 
     public NoteRepository(Application application) {
-        NoteDatabase database = NoteDatabase.getInstance(application);
+        NoteDao.NoteDatabase database = NoteDao.NoteDatabase.getInstance(application);
         noteDao = database.noteDao();
         allNotes = noteDao.getAllNotes();
     }
